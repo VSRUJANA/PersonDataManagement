@@ -20,6 +20,11 @@ namespace Person_Data_Management
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("Get Average age in the list");
             GetAverageAge(listPersonInCity);
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("Check whether specific name is present in the list");
+            Console.Write("Enter name to be checked : ");
+            string name = Console.ReadLine();
+            CheckForSpecificName(name, listPersonInCity);
         }
         private static void AddRecords(List<Person> listPersonInCity)
         {
@@ -55,6 +60,17 @@ namespace Person_Data_Management
         {
             double avgAge = listPersonInCity.Average(e => e.Age);
             Console.WriteLine("Average Age : " + Math.Round(avgAge,4));
+        }
+        private static void CheckForSpecificName(string name, List<Person> listPersonInCity)
+        {
+            if (listPersonInCity.Any(e => e.Name == name))
+            {
+                Console.WriteLine(name + " is present in the list");
+            }
+            else
+            {
+                Console.WriteLine(name + " is not present in the list");
+            }
         }
     }
 }
