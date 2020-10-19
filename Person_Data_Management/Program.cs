@@ -25,6 +25,9 @@ namespace Person_Data_Management
             Console.Write("Enter name to be checked : ");
             string name = Console.ReadLine();
             CheckForSpecificName(name, listPersonInCity);
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("Skip Record from the list if age is less than 60");
+            SkipIfLessThanSixty(listPersonInCity);
         }
         private static void AddRecords(List<Person> listPersonInCity)
         {
@@ -70,6 +73,13 @@ namespace Person_Data_Management
             else
             {
                 Console.WriteLine(name + " is not present in the list");
+            }
+        }
+        private static void SkipIfLessThanSixty(List<Person> listPersonInCity)
+        {
+            foreach (Person person in listPersonInCity.FindAll(e => e.Age > 60))
+            {
+                Console.WriteLine("Name: " + person.Name + "\tAge: " + person.Age);
             }
         }
     }
