@@ -17,6 +17,9 @@ namespace Person_Data_Management
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("Checking whether there are teenagers in the list");
             CheckingForTeenagerPerson(listPersonInCity);
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("Get Average age in the list");
+            GetAverageAge(listPersonInCity);
         }
         private static void AddRecords(List<Person> listPersonInCity)
         {
@@ -47,6 +50,11 @@ namespace Person_Data_Management
             {
                 Console.WriteLine("There are no teenagers in the list");
             }
+        }
+        private static void GetAverageAge(List<Person> listPersonInCity)
+        {
+            double avgAge = listPersonInCity.Average(e => e.Age);
+            Console.WriteLine("Average Age : " + Math.Round(avgAge,4));
         }
     }
 }
