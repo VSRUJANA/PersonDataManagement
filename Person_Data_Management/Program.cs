@@ -23,11 +23,16 @@ namespace Person_Data_Management
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("Check whether specific name is present in the list");
             Console.Write("Enter name to be checked : ");
-            string name = Console.ReadLine();
-            CheckForSpecificName(name, listPersonInCity);
+            string name1 = Console.ReadLine();
+            CheckForSpecificName(name1, listPersonInCity);
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("Skip Record from the list if age is less than 60");
             SkipIfLessThanSixty(listPersonInCity);
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("Remove specific name from in the list");
+            Console.Write("Enter name to be removed : ");
+            string name2 = Console.ReadLine();
+            RemoveSpecificName(name2, listPersonInCity);
         }
         private static void AddRecords(List<Person> listPersonInCity)
         {
@@ -40,6 +45,10 @@ namespace Person_Data_Management
             listPersonInCity.Add(new Person("203456882", "Winston", "1208 Alex st, Newyork,NY", 65));
             listPersonInCity.Add(new Person("203456883", "Mac", "126 Province Ave, Baltimore,NY", 85));
             listPersonInCity.Add(new Person("203456884", "SAM", "126 Province Ave, Baltimore,NY", 95));
+            foreach (Person p in listPersonInCity)
+            {
+                Console.WriteLine("Name :" + p.Name + "\tAge :" + p.Age);
+            }
         }
         private static void Retrieving_TopTwoRecord_ForAge_LessThanSixty(List<Person> listPersonsInCity)
         {
@@ -80,6 +89,15 @@ namespace Person_Data_Management
             foreach (Person person in listPersonInCity.FindAll(e => e.Age > 60))
             {
                 Console.WriteLine("Name: " + person.Name + "\tAge: " + person.Age);
+            }
+        }
+        public static void RemoveSpecificName(string name, List<Person> personList)
+        {
+            personList.RemoveAll(e => e.Name.Equals(name));
+            Console.WriteLine("Record removed successfully");
+            foreach (Person p in personList)
+            {
+                Console.WriteLine("Name :" + p.Name + "\tAge :" + p.Age);
             }
         }
     }
